@@ -1,16 +1,16 @@
-//variables
+//variables------
 let clickValue = 1;
-let plateBodyValue = 10;
+let plateBodyValue = 5;
+let daggerValue = 10;
 let cookies = 0;
 let clicker = 0;
 let perSec = 0;
 const counter = document.getElementById('counter');
-plateBodyAfford();
 
-//event listeners
-window.addEventListener('load', plateBodyLoad);
+//event listeners------
+window.addEventListener('load', buttonsLoad, { once: true });
 
-//cookie functions
+//cookie functions------
 function clickButton() {
   cookies += clickValue;
   clicker += clickValue;
@@ -37,18 +37,19 @@ setInterval(function () {
   counter.innerHTML = `${cookies}`;
 }, 1000);
 
-//shop functions
-function plateBodyLoad() {
+//shop functions//------
+function buttonsLoad() {
   document.getElementById('plateBody').disabled = true;
+  document.getElementById('dagger').disabled = true;
 }
-
-function plateBodyAfford() {
+//->function to check cookies for plateBody
+setInterval(function () {
   if (cookies >= 100) {
     document.getElementById('plateBody').disabled = false;
   } else {
     document.getElementById('plateBody').disabled = true;
   }
-}
+}, 1000);
 function incrementPlateBody() {
   cookies += plateBodyValue;
 }
@@ -57,4 +58,23 @@ function plateBodyPurchase() {
   perSec += plateBodyValue;
   perSecond.innerHTML = `${perSec}`;
   setInterval(incrementPlateBody, 1000);
+  cookies -= 100;
+}
+//->function to check cookies for dagger
+setInterval(function () {
+  if (cookies >= 250) {
+    document.getElementById('dagger').disabled = false;
+  } else {
+    document.getElementById('dagger').disabled = true;
+  }
+}, 1000);
+function incrementdagger() {
+  cookies += daggerValue;
+}
+
+function daggerPurchase() {
+  perSec += daggerValue;
+  perSecond.innerHTML = `${perSec}`;
+  setInterval(incrementdagger, 1000);
+  cookies -= 250;
 }
