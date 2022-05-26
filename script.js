@@ -1,13 +1,14 @@
 //variables
 let clickValue = 1;
+let plateBodyValue = 10;
 let cookies = 0;
 let clicker = 0;
 let perSec = 0;
 const counter = document.getElementById('counter');
+plateBodyAfford();
 
 //event listeners
-let x = document.getElementById('plateBody');
-x.addEventListener('onload', plateBodyLoad);
+window.addEventListener('load', plateBodyLoad);
 
 //cookie functions
 function clickButton() {
@@ -37,14 +38,23 @@ setInterval(function () {
 }, 1000);
 
 //shop functions
-function plateBodyLoad(){
-  document.getElementById('plateBody'.disabled = true);
+function plateBodyLoad() {
+  document.getElementById('plateBody').disabled = true;
 }
 
-function plateBodyAfford(){
-  if (cookies == 100) {
-    document.getElementById('plateBody').disabled = false);
+function plateBodyAfford() {
+  if (cookies >= 100) {
+    document.getElementById('plateBody').disabled = false;
   } else {
-    document.getElementById('plateBody').disabled = true);
+    document.getElementById('plateBody').disabled = true;
   }
+}
+function incrementPlateBody() {
+  cookies += plateBodyValue;
+}
+
+function plateBodyPurchase() {
+  perSec += plateBodyValue;
+  perSecond.innerHTML = `${perSec}`;
+  setInterval(incrementPlateBody, 1000);
 }
