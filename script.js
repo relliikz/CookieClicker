@@ -1,9 +1,15 @@
+//variables
 let clickValue = 1;
 let cookies = 0;
 let clicker = 0;
 let perSec = 0;
 const counter = document.getElementById('counter');
 
+//event listeners
+let x = document.getElementById('plateBody');
+x.addEventListener('onload', plateBodyLoad);
+
+//cookie functions
 function clickButton() {
   cookies += clickValue;
   clicker += clickValue;
@@ -29,3 +35,16 @@ function counterUp() {
 setInterval(function () {
   counter.innerHTML = `${cookies}`;
 }, 1000);
+
+//shop functions
+function plateBodyLoad(){
+  document.getElementById('plateBody'.disabled = true);
+}
+
+function plateBodyAfford(){
+  if (cookies == 100) {
+    document.getElementById('plateBody').disabled = false);
+  } else {
+    document.getElementById('plateBody').disabled = true);
+  }
+}
