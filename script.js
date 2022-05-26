@@ -55,10 +55,14 @@ function incrementPlateBody() {
 }
 
 function plateBodyPurchase() {
-  perSec += plateBodyValue;
-  perSecond.innerHTML = `${perSec}`;
-  setInterval(incrementPlateBody, 1000);
-  cookies -= 100;
+  if (cookies < 100) {
+    console.log('not enough gp');
+  } else {
+    perSec += plateBodyValue;
+    perSecond.innerHTML = `${perSec}`;
+    setInterval(incrementPlateBody, 1000);
+    cookies -= 100;
+  }
 }
 //->function to check cookies for dagger
 setInterval(function () {
@@ -73,8 +77,12 @@ function incrementdagger() {
 }
 
 function daggerPurchase() {
-  perSec += daggerValue;
-  perSecond.innerHTML = `${perSec}`;
-  setInterval(incrementdagger, 1000);
-  cookies -= 250;
+  if (cookies < 250) {
+    console.log('not enough gp');
+  } else {
+    perSec += daggerValue;
+    perSecond.innerHTML = `${perSec}`;
+    setInterval(incrementdagger, 1000);
+    cookies -= 250;
+  }
 }
